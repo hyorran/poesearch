@@ -3,8 +3,8 @@ import Dashboard from './features/Dashboard'
 
 const App: React.FC = () => {
   return (
-    <div className='App'>
-      <header className='App-header'>
+    <div className="App">
+      <header className="App-header">
         <Dashboard />
       </header>
     </div>

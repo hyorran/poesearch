@@ -1,14 +1,12 @@
-import AppBar from '@material-ui/core/AppBar'
-import Badge from '@material-ui/core/Badge'
+import AppBar from '../../components/AppBar'
 import CssBaseline from '@material-ui/core/CssBaseline'
-import Drawer from '@material-ui/core/Drawer'
+import Drawer from '../../components/Drawer'
 import IconButton from '@material-ui/core/IconButton'
 import { createStyles, Theme, withStyles } from '@material-ui/core/styles'
-import Toolbar from '@material-ui/core/Toolbar'
+import Toolbar from '../../components/Toolbar'
 import Typography from '@material-ui/core/Typography'
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft'
 import MenuIcon from '@material-ui/icons/Menu'
-import NotificationsIcon from '@material-ui/icons/Notifications'
 import classNames from 'classnames'
 import * as React from 'react'
 import { useState } from 'react'
@@ -139,11 +137,6 @@ function Dashboard(props: Props): JSX.Element {
           <Typography component="h1" variant="h6" color="inherit" noWrap className={classes.title}>
             Poe Search
           </Typography>
-          <IconButton href={'#'} color="inherit">
-            <Badge badgeContent={4} color="secondary">
-              <NotificationsIcon />
-            </Badge>
-          </IconButton>
         </Toolbar>
       </AppBar>
       <Drawer
