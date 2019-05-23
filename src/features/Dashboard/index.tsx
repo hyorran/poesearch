@@ -3,6 +3,8 @@ import CssBaseline from '@material-ui/core/CssBaseline'
 import Drawer from '../../components/Drawer'
 import IconButton from '@material-ui/core/IconButton'
 import { createStyles, Theme, withStyles } from '@material-ui/core/styles'
+import InboxIcon from '@material-ui/icons/Inbox'
+import MailIcon from '@material-ui/icons/Mail'
 import Toolbar from '../../components/Toolbar'
 import Typography from '@material-ui/core/Typography'
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft'
@@ -10,6 +12,8 @@ import MenuIcon from '@material-ui/icons/Menu'
 import classNames from 'classnames'
 import * as React from 'react'
 import { useState } from 'react'
+import { List, ListItem, ListItemIcon, ListItemText } from '@material-ui/core'
+import map from 'lodash/map'
 
 const drawerWidth = 240
 
@@ -107,6 +111,21 @@ interface Props {
   }
 }
 
+const features = [
+  {
+    value: 'weapons',
+    label: 'Weapons',
+  },
+  {
+    value: 'armours',
+    label: 'Armours',
+  },
+  {
+    value: 'rings',
+    label: 'Rings',
+  },
+]
+
 function Dashboard(props: Props): JSX.Element {
   const [open, setOpen] = useState<boolean>(false)
 
@@ -126,7 +145,6 @@ function Dashboard(props: Props): JSX.Element {
       <AppBar position="absolute" className={classNames(classes.appBar, open && classes.appBarShift)}>
         <Toolbar disableGutters={!open} className={classes.toolbar}>
           <IconButton
-            href={'#'}
             color="inherit"
             aria-label="Open drawer"
             onClick={handleDrawerOpen}
@@ -141,16 +159,27 @@ function Dashboard(props: Props): JSX.Element {
       </AppBar>
       <Drawer
         variant="permanent"
-        classes={{
-          paper: classNames(classes.drawerPaper, !open && classes.drawerPaperClose),
+        PaperProps={{
+          className: classNames(classes.drawerPaper, !open && classes.drawerPaperClose),
         }}
         open={open}
       >
         <div className={classes.toolbarIcon}>
-          <IconButton href={'#'} onClick={handleDrawerClose}>
+          <IconButton onClick={handleDrawerClose}>
             <ChevronLeftIcon />
           </IconButton>
         </div>
+        <List component="ul">
+          {map(
+            features,
+            (value, index): JSX.Element => (
+              <ListItem component="li" button key={index}>
+                <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
+                <ListItemText primary={value.label} />
+              </ListItem>
+            )
+          )}
+        </List>
       </Drawer>
       <main className={classes.content} />
     </div>

@@ -11,7 +11,7 @@ interface Props {
   PaperProps?: object
   SlideProps?: object
   transitionDuration?: number | { enter?: number; exit?: number }
-  classes?: object
+  classes: object
   variant?: 'permanent' | 'persistent' | 'temporary'
 }
 
